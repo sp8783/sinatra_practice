@@ -1,0 +1,16 @@
+<div>
+  <h3><%= escape_html(@title) %></h3>
+  <p><%= escape_html(@content).gsub(/\n/, '<br/>') %></p>
+</div>
+<div class="btn-area">
+  <form class="inline-block-btn" action="/memos/<%= params[:id] %>/edit" method="get">
+    <input type="submit" value="編集">
+  </form>
+  <form class="inline-block-btn" action="/memos/<%= params[:id] %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="削除">
+  </form>
+</div>
+<div>
+  <a href="/memos">メモ一覧に戻る</a>
+</div>
