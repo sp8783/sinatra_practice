@@ -33,7 +33,7 @@ post '/memos' do
 
   memos = load_memos(FILEPATH)
   next_id = memos.empty? ? '1' : (memos.keys[-1].to_i + 1).to_s
-  memos[next_id] = { 'title' => title, 'content' => content }
+  memos[next_id] = { title:, content: }
   update_memos(FILEPATH, memos)
 
   redirect '/memos'
