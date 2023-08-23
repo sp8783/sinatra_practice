@@ -1,6 +1,6 @@
 <div>
-  <h3><%= escape_html(@title) %></h3>
-  <p><%= escape_html(@content).gsub(/\n/, '<br/>') %></p>
+  <h3><%= escape_html(@memo['title']) %></h3>
+  <p><%= escape_html(@memo['content']).gsub(/\n/, '<br/>') %></p>
 </div>
 <div class="btn-area">
   <form class="inline-block-btn" action="/memos/<%= params[:id] %>/edit" method="get">

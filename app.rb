@@ -41,15 +41,13 @@ end
 
 get '/memos/:id' do
   memos = load_memos(FILEPATH)
-  @title = memos[params[:id]]['title']
-  @content = memos[params[:id]]['content']
+  @memo = memos[params[:id]]
   erb :detail
 end
 
 get '/memos/:id/edit' do
   memos = load_memos(FILEPATH)
-  @title = memos[params[:id]]['title']
-  @content = memos[params[:id]]['content']
+  @memo = memos[params[:id]]
   erb :edit
 end
 
