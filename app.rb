@@ -4,7 +4,7 @@ require 'json'
 require 'sinatra'
 require 'sinatra/reloader'
 
-FILEPATH = 'public/memos.json'
+FILEPATH = 'memos.json'
 
 def load_memos(filepath)
   File.open(filepath) { |f| JSON.parse(f.read) }
