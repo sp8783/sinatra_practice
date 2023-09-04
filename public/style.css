@@ -1,0 +1,96 @@
+body {
+    font-family: "Hiragino Kaku Gothic Pro","Yu Gothic","Meiryo",sans-serif;
+    font-size : 100%;
+    line-height: 1.8;
+    box-sizing: border-box;
+}
+
+/* 見出しの垂直方向のマージンを統一 */
+h1,h2{
+  margin : 24px 0 
+}
+
+/* 見出し1 */ 
+h1 {
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #7db4e6;/*左線*/
+  }
+
+/* 見出し1 */ 
+h2 {
+  font-size : 2em;
+  font-weight: bold;
+  line-height : 1.3333;
+  border-bottom: solid 2px #DCDCE0;
+}
+
+/* 文章 */ 
+p {
+  margin: 1em 0;
+  line-height: 1.8;
+}
+
+/* リスト */ 
+ol, ul {
+  padding-left: 2em;
+}
+ol {
+  list-style: decimal;
+}
+ul {
+  list-style: disc;
+}
+
+/* 入力フォーム */
+.form-items__item {
+  margin-bottom: 1em;
+}
+
+input[type="text"], textarea {
+  width: calc(100% - 130px);
+  padding: .5em;
+  border: solid 1px #aaa;
+  border-radius: 4px;
+  outline-color: #9dbbff;
+  vertical-align: middle;
+}
+
+label {
+  width: 104px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: bold;
+  padding-right: 8px;
+}
+
+input[type="submit"], .btn-style-link {
+  background-color: #5bb4ff;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  width: 120px;
+  height: 40px;
+  border: solid 1px #4397de;
+  border-radius: 4px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.btn-area {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.inline-block-btn {
+  display: inline-block;
+}
+
+a.btn-style-link{
+  display: inline-block;
+  text-decoration: none;
+}
+
+
