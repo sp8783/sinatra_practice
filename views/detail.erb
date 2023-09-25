@@ -1,6 +1,6 @@
 <div>
-  <h3><%= escape_html(@memo['title']) %></h3>
-  <p><%= escape_html(@memo['content']).gsub(/\n/, '<br/>') %></p>
+  <h3><%= escape_html(@memo[:title]) %></h3>
+  <p><%= escape_html(@memo[:content]).gsub(/\n/, '<br/>') %></p>
 </div>
 <div class="btn-area">
   <a href="/memos/<%= params[:id] %>/edit" class="inline-block-btn">編集</a>
