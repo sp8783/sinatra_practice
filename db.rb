@@ -12,10 +12,11 @@ def create_table
 end
 
 def load_all_memos
-  conn.exec('SELECT * FROM memos')
+  result = conn.exec('SELECT * FROM memos')
+  result.map { |memo| memo.transform_keys(&:to_sym) }
 end
 
-def load_the_memo_with_id(id:)
+def load_the_memo_with_id(id)
   result = conn.exec('SELECT * FROM memos WHERE id = $1;', [id])
   result[0].transform_keys(&:to_sym)
 end
