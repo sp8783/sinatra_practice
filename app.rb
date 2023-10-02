@@ -22,10 +22,11 @@ get '/memos/new' do
 end
 
 post '/memos' do
-  title = params[:title]
-  content = params[:content]
-
-  add_memo(title, content)
+  memo = {
+    title: params[:title],
+    content: params[:content]
+  }
+  add_memo(memo)
   redirect '/memos'
 end
 
@@ -40,12 +41,13 @@ get '/memos/:id/edit' do
 end
 
 patch '/memos/:id' do
-  title = params[:title]
-  content = params[:content]
-  id = params[:id]
-
-  update_memo(title, content, id)
-  redirect "/memos/#{id}"
+  memo = {
+    title: params[:title],
+    content: params[:content],
+    id: params[:id]
+  }
+  update_memo(memo)
+  redirect "/memos/#{memo[:id]}"
 end
 
 delete '/memos/:id' do
