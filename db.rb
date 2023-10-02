@@ -11,13 +11,13 @@ def create_table
   conn.exec('CREATE TABLE memos (id serial, title varchar(255), content text)') if result.values.empty?
 end
 
-def load_memos(id: nil)
-  if id.nil?
-    conn.exec('SELECT * FROM memos')
-  else
-    result = conn.exec('SELECT * FROM memos WHERE id = $1;', [id])
-    result[0].transform_keys(&:to_sym)
-  end
+def load_all_memos
+  conn.exec('SELECT * FROM memos')
+end
+
+def load_the_memo_with_id(id:)
+  result = conn.exec('SELECT * FROM memos WHERE id = $1;', [id])
+  result[0].transform_keys(&:to_sym)
 end
 
 def add_memo(title, content)

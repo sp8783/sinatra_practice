@@ -13,7 +13,7 @@ get '/' do
 end
 
 get '/memos' do
-  @memos = load_memos
+  @memos = load_all_memos
   erb :index
 end
 
@@ -30,12 +30,12 @@ post '/memos' do
 end
 
 get '/memos/:id' do
-  @memo = load_memos(id: params[:id])
+  @memo = load_the_memo_with_id(id: params[:id])
   erb :detail
 end
 
 get '/memos/:id/edit' do
-  @memo = load_memos(id: params[:id])
+  @memo = load_the_memo_with_id(id: params[:id])
   erb :edit
 end
 
