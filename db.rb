@@ -16,7 +16,7 @@ def load_all_memos
   result.map { |memo| memo.transform_keys(&:to_sym) }
 end
 
-def load_the_memo_with_id(id)
+def load_memo_by_id(id)
   result = conn.exec('SELECT * FROM memos WHERE id = $1;', [id])
   result[0].transform_keys(&:to_sym)
 end

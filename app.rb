@@ -27,12 +27,12 @@ post '/memos' do
 end
 
 get '/memos/:id' do
-  @memo = load_the_memo_with_id(params[:id])
+  @memo = load_memo_by_id(params[:id])
   erb :detail
 end
 
 get '/memos/:id/edit' do
-  @memo = load_the_memo_with_id(params[:id])
+  @memo = load_memo_by_id(params[:id])
   erb :edit
 end
 
