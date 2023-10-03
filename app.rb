@@ -22,11 +22,7 @@ get '/memos/new' do
 end
 
 post '/memos' do
-  memo = {
-    title: params[:title],
-    content: params[:content]
-  }
-  add_memo(memo)
+  add_memo(params.slice(:title, :content))
   redirect '/memos'
 end
 
@@ -41,11 +37,7 @@ get '/memos/:id/edit' do
 end
 
 patch '/memos/:id' do
-  memo = {
-    title: params[:title],
-    content: params[:content],
-    id: params[:id]
-  }
+  memo = params.slice(:title, :content, :id)
   update_memo(memo)
   redirect "/memos/#{memo[:id]}"
 end
