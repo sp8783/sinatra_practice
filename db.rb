@@ -12,7 +12,7 @@ def create_table
 end
 
 def load_all_memos
-  result = conn.exec('SELECT * FROM memos')
+  result = conn.exec('SELECT * FROM memos ORDER BY id ASC')
   result.map { |memo| memo.transform_keys(&:to_sym) }
 end
 
