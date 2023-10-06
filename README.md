@@ -12,11 +12,15 @@ $ git clone https://github.com/sp8783/sinatra_practice.git
 ```
 $ bundle install
 ```
-3. アプリケーションを起動する
+3. PostgreSQLサーバを起動する
+```
+$ sudo service postgresql start
+```
+4. アプリケーションを起動する
 ```
 $ bundle exec ruby app.rb
 ```
-4. ブラウザから以下のURLにアクセスする
+5. ブラウザから以下のURLにアクセスする
 ```
 http://localhost:4567/memos
 ```

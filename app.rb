@@ -1,17 +1,11 @@
 # frozen_string_literal: true
 
-require 'json'
 require 'sinatra'
 require 'sinatra/reloader'
+require_relative 'db'
 
-FILEPATH = 'memos.json'
-
-def load_memos(filepath)
-  File.open(filepath) { |f| JSON.parse(f.read) }
-end
-
-def update_memos(filepath, memos)
-  File.open(filepath, 'w') { |f| JSON.dump(memos, f) }
+configure do
+  create_table
 end
 
 get '/' do
@@ -19,7 +13,7 @@ get '/' do
 end
 
 get '/memos' do
-  @memos = load_memos(FILEPATH)
+  @memos = load_all_memos
   erb :index
 end
 
@@ -28,45 +22,28 @@ get '/memos/new' do
 end
 
 post '/memos' do
-  title = params[:title]
-  content = params[:content]
-
-  memos = load_memos(FILEPATH)
-  next_id = memos.empty? ? '1' : (memos.keys[-1].to_i + 1).to_s
-  memos[next_id] = { title:, content: }
-  update_memos(FILEPATH, memos)
-
+  add_memo(params.slice(:title, :content))
   redirect '/memos'
 end
 
 get '/memos/:id' do
-  memos = load_memos(FILEPATH)
-  @memo = memos[params[:id]]
+  @memo = load_memo_by_id(params[:id])
   erb :detail
 end
 
 get '/memos/:id/edit' do
-  memos = load_memos(FILEPATH)
-  @memo = memos[params[:id]]
+  @memo = load_memo_by_id(params[:id])
   erb :edit
 end
 
 patch '/memos/:id' do
-  title = params[:title]
-  content = params[:content]
-
-  memos = load_memos(FILEPATH)
-  memos[params[:id]] = { 'title' => title, 'content' => content }
-  update_memos(FILEPATH, memos)
-
-  redirect "/memos/#{params[:id]}"
+  memo = params.slice(:title, :content, :id)
+  update_memo(memo)
+  redirect "/memos/#{memo[:id]}"
 end
 
 delete '/memos/:id' do
-  memos = load_memos(FILEPATH)
-  memos.delete(params[:id])
-  update_memos(FILEPATH, memos)
-
+  delete_memo(params[:id])
   redirect '/memos'
 end
 

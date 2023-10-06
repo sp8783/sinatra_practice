@@ -2,9 +2,9 @@
   <a class="btn-style-link" href="/memos/new">新規作成</a>
 </div>
 <ul>
-  <% @memos.each do |id, memo| %>
+  <% @memos.each do |memo| %>
     <li>
-      <a href="/memos/<%= id %>"><%= escape_html(memo["title"]) %></a>
+      <a href="/memos/<%= memo[:id] %>"><%= escape_html(memo[:title]) %></a>
     </li>
   <% end %>
 </ul>
